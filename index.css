@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@font-face {
+    font-family: 'FiraCode-Regular';
+    src: url('/assets/fonts/FiraCode-Regular.woff2') format('woff2'),
+    url('/assets/fonts/FiraCode-Regular.woff') format('woff'),
+    url('/assets/fonts/FiraCode-VF.ttf') format('ttf');
+}
+
+:root {
+    --background :rgb(37, 37, 37);
+    --dark1: rgb(26, 26, 26);
+    --panel: rgba(26, 26, 26, 0.456);
+    --text-color1: rgb(219, 219, 219);
+    --text-color2: rgb(185, 185, 185);
+    --accent1: rgb(255, 215, 0);
+    --accent2: rgb(88, 88, 88);
+}
+
+body, html {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(37, 37, 37);
+    overflow: hidden;
+    color: var(--text-color2);
+    font-family: 'Open-Sans', sans-serif;
+    font-size: 1em;
+}
+
+button, input {
+    color: var(--text-color1);
+    height: 100%;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0px 2.5px;
+    background-color: rgba(0, 0, 0, 0.089);
+    border-radius: 0.1em;;
+    
+    /* border: solid white 1px; */
+    border: solid white 0px;
+    /* border-bottom: 1px solid rgb(90, 90, 90); */
+}
+
+input:focus {
+    background-color: var(--accent1);
+    color: var(--dark1);
+    border: none;
+    outline: none;
+}
+
+.panel {
+    background-color: var(--panel);
+    box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.03) inset;
+    backdrop-filter: blur(30px);
+    border-radius: 1em;
+    overflow: hidden;;
+}
+
+.center-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu {
+    overflow: visible;
+    position: absolute;
+    width: 20em;
+    height: 100%;;
+    left: -20em;
+    top: 0em;
+    z-index: 5;
+    border-radius: 0em;
+    transition-timing-function: cubic-bezier(.08,.82,.17,1);
+    transition: 100ms;
+    display: flex;
+    flex-flow: column;
+    padding: 6em 0em 0em 0em;
+}
+
+#menu button {
+    width: auto;
+    background-color: rgba(255, 0, 0, 0);
+    border: none;
+    height: max-content;
+}
+
+#menu button:focus {
+    color: var(--text-color1)
+}
+
+#menu-hover {
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    width: 3em;
+    height: 3em;;
+    z-index: 6;
+}
+
+#menu-hover:hover ~ #menu, #menu:hover {
+    left: 0em;
+}
+
+#search-menu {
+    width: 80%;
+    height: 80%;
+    z-index: 4;
+}
+
+#search-exit {
+    width: min-content;
+    height: min-content;
+    position: absolute;
+    right: 0em;
+    top: 0em;
+    background-color: rgba(255, 0, 0, 0);
+    padding: 1em 1em 0em 0em;
+    border: none;
+}
+
+#search-exit image {
+    width: 2em;
+    height: 2em;
+}
+
+#search-bar-menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#search-bar {
+    width: 50%;
+    margin: 1em 0em 0em 0em;
+}
+
+#search-results {
+    width: 90%;
+    margin: 1em 0em 0em 5%;
+    padding: 1em;
+    height: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 90%;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.map-preview {
+    height: 20em;
+    width: 16em;
+    background-color: rgb(55, 55, 55);
+    border-radius: 0.5em;
+    margin: 0.7em 0.5em;
+    padding: 0.5em;
+}
+
+.map-preview h4 {
+    margin: 0em;
+}
+
+#save-menu {
+    width: min-content;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 4;
+}
+
+#save-menu-input {
+    width: 20em;
+    margin: 0em 0em 1em 0em;
+}
+
+#save-menu-controls {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#edit-menu {
+    padding: 1em;
+    z-index: 4;
+}
+
+#map-image-upload {
+    width: 20em;
+    height: 30em;
+    border: solid var(--accent2) 1px;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#map-image-upload img {
+    width: 2em;
+}
+
+#map-wrapper {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#map {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+svg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+}
+
+#canvas,#canvas-wrapper {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+}
+
+#toolbar-wrapper {
+    width: 400px;
+    height: 70%;
+    margin-top: 5%;
+    position: absolute;
+    right: 0px;
+    z-index: 3;
+    padding: 2% 1% 1% 1%;
+    border-radius: 0.5em 0em 0em 0.5em;
+}
+
+/* #toolbar-wrapper:before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: calc(100% + 5px);
+    height: 5px;
+    left: -5px;
+    top: -5px;
+    background-color: var(--accent1);
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0.479);
+}
+
+#toolbar-wrapper:after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: calc(100% + 5px);
+    height: 5px;
+    left: -5px;
+    bottom: -5px;
+    background-color: var(--accent1);
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0.479);
+} */
+
+#toolbar-wrapper h2 {
+    width: 100%;
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+    font-size: 2em;
+    color: var(--text-color1);
+}
+
+#toolbar {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tool {
+
+}
+
+.tool:hover ,#brushes > button:hover {
+    background-color: var(--accent1);
+    color: var(--dark1);
+}
+
+#brushes {
+    width: 100%;
+    height: max-content;
+    margin: 30px 0px 30px 0px;
+    border-top: 2px solid var(--accent2);
+    padding: 30px 0px 0px 0px;
+}
+
+#brushes > button {
+    width: 100%;
+    padding: 10px 40px;
+}
+
+#brushes-container {
+    width: 100%;
+    height: max-content;
+    margin: 10px 0px 0px 0px;
+    padding: 10px;
+}
+
+.brush {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 0px;
+    border-left: 4px solid white;
+    border-right: 4px solid white;
+}
+
+#brush-properties, #fill-properties {
+    width: 100%;
+    height: max-content;
+    margin: 30px 0px 30px 0px;
+    border-top: 2px solid var(--accent2);
+    padding: 0px 10px 0px 10px;
+}
+
+#brush-properties input, #fill-properties input {
+    height: 100%;
+    margin-left: 10px;
+}
+
+#brush-properties div, #fill-properties div {
+    margin: 25px 0px;
+    height: 1em;
+}
+
+#brush-properties p, #fill-properties p {
+    font-size: 1.5em;
+    width: max-content;
+}
+
+#brush-properties div > *, #fill-properties div > * {
+    display: inline;
+}
+
+#name-input {
+
+}
+
+#color-picker, #fill-color-picker {
+    width: 2em;
+    height: 1em;
+    padding: 0px;
+}
+
+#thickness-input, #transparency-input {
+    width: 5em;
+}
+
+input[type="color"] {
+	padding: 0px;
+    border: 0px solid white;
+}
+
+#waypoint-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#waypoint-box {
+    padding: 10px;
+    width: max-content;
+    height: max-content;
+    background-color: rgba(0, 0, 0, 0.26);
+    backdrop-filter: blur(20px);
+    position: absolute;
+    z-index: 2;
+    overflow: hidden;
+    display: none;
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.267);
+    resize: both;
+}
+
+#waypoint-textarea {
+    width: 100%;
+    height: calc(100% - 2em);
+    background-color: rgba(53, 53, 53, 0);
+    border: 0px solid black;
+    margin: 0px;
+    color: white;
+    display: block;
+    resize: none;
+    word-wrap:normal;
+}
+
+#waypoint-textarea:focus {
+    border: 0px solid black;
+    outline: 0px black;
+    padding: 0px;
+}
+
+#waypoint-textarea::selection {
+    background-color: var(--accent1);
+}
+
+#waypoint-box input {
+    width: calc(100% - 30px);
+    height: 1em;
+    font-size: 20px;
+    display: block;
+    background-color: rgba(0, 0, 0, 0);
+    margin-bottom: 10px;
+    border: 0px solid red;
+    border-bottom: 1px solid rgb(90, 90, 90);
+}
+
+#waypoint-box input:enabled {
+    border: 0px solid red;
+    border-bottom: 1px solid rgb(90, 90, 90);
+    outline: 0px black;
+}

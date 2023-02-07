@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF8"> 
+    <title>Mapper🗺️</title>
+</head>
+<body>
+
+
+    <img id="menu-hover" src="assets/menu_icon.svg" />
+    <div id="menu" class="panel" >
+        <button id="menu-search" onclick="openSearch()" >Search</button>
+        <button id="menu-search" onclick="openSave()" >Save</button>
+        <button id="menu-search" onclick="openEdit()" >Edit</button>
+    </div>
+    
+
+    <div id="waypoint-box" >
+        <input id="waypoint-name" placeholder="name" >
+        <div id="waypoint-textarea" contentEditable="true" spellcheck="false" ></div>
+    </div>
+
+    <div id="toolbar-wrapper" class="panel" >
+        <!--<h2>Toolbar</h2>-->
+        <div id="toolbar" >
+            <button id="pointer" class="tool">pointer</button>
+            <button id="pencil" class="tool">pencil</button>
+            <button id="poly" class="tool">polygon</button>
+            <button id="waypoint" class="tool">waypoint</button>
+        </div>
+        <div id="brush-properties" >
+            <div><p>Name</p><input id="name-input" value="New Brush" ></div>
+            <div><p>Color<input id="color-picker" type="color" value="#ffffff" ></p></div>
+            <div><p>Thickness<input id="thickness-input" type="range" min="0.1" max="100" step="0.1" value="5" ><p id="thickness-display" >5</p></p></div>
+        </div>
+        <div id="fill-properties" >
+            <div><p>Fill<input id="fill-checkbox" type="checkbox" autocomplete="off" ></p></div>
+            <div><p>Color<input id="fill-color-picker" type="color" value="#ffffff" ></p></div>
+            <div><p>Transparency<input id="transparency-input" type="range" min="0" max="1" step="0.01" value="1" ><p id="transparency-display" >1</p></p></div>
+        </div>
+        <div id="brushes" >
+            <button id="new-brush-btn" >New Brush</button>
+            <div id="brushes-container" >
+            </div>
+        </div>
+    </div>    
+    
+    <div id="waypoint-container" >
+        <canvas id=canvas ></canvas>     
+    </div>
+
+    <div class="center-wrapper" >
+        <div id="search-menu" class="panel" >
+            <button id="search-exit" onclick="closeSearch()" ><img src="assets/close_icon.svg" /></button>
+            <div id="search-bar-menu" >
+                <input id="search-bar" placeholder="Search" >
+            </div>
+            <div id="search-results" >
+
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="center-wrapper" >
+        <div id="save-menu"class="panel" >
+            <input id="save-menu-input" >
+            <div id="save-menu-controls" >
+                <button onclick="map.utils.saveMap(ui.saveInput.value); closeSave()" >Save</button>
+                <button onclick="closeSave()" >Cancel</button>   
+            </div> 
+        </div>    
+    </div>
+
+    <div class="center-wrapper" >
+        <div id="edit-menu"class="panel" >
+            <div ondrop="fileDrop(event)" ondragover="dragOverHandler(event)" id="map-image-upload" >
+                <img ondrag="" src="assets/file_add.svg" />
+            </div>
+        </div>    
+    </div>
+       
+    
+    <!-- stole that grid from CodePen https://codepen.io/pigabo/pen/eAiLF -->
+    
+    <svg width="100%" height="100%" >
+        <defs>
+            <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2e2e2e" stroke-width="1" />
+            </pattern>
+            <pattern id="grid" width="200" height="200" patternUnits="userSpaceOnUse">
+                <rect width="200" height="200" fill="url(#smallGrid)" />
+                <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#2e2e2e" stroke-width="3" />
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+
+    <!-- classes-->
+    <script src="js/classes/Brush.js"></script>
+    <script src="js/classes/Waypoint.js"></script>
+    <script src="js/classes/SmoothPointer.js"></script>
+
+    <!-- main-->
+    <script src="js/netUtils.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/tools/pointer.js"></script>
+    <script src="js/tools/pencil.js"></script>
+    <script src="js/tools/poly.js"></script>
+    <script src="js/tools/waypoint.js"></script>
+    <script src="js/tool.js"></script>
+    <script src="js/config.js"></script>
+
+    <!-- other-->
+    <script src="js/map_controls.js"></script>
+    <script src="js/ui_controls.js"></script>
+    <script src="js/rendering.js"></script>
+</body>
+
+</html>
