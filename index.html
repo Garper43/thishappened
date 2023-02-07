@@ -1,122 +1,50 @@
 <!DOCTYPE html>
+
 <html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
 
-<head>
-    <link rel="stylesheet" href="index.css">
-    <meta charset="UTF8"> 
-    <title>Mapper🗺️</title>
-</head>
-<body>
-
-
-    <img id="menu-hover" src="assets/menu_icon.svg" />
-    <div id="menu" class="panel" >
-        <button id="menu-search" onclick="openSearch()" >Search</button>
-        <button id="menu-search" onclick="openSave()" >Save</button>
-        <button id="menu-search" onclick="openEdit()" >Edit</button>
-    </div>
-    
-
-    <div id="waypoint-box" >
-        <input id="waypoint-name" placeholder="name" >
-        <div id="waypoint-textarea" contentEditable="true" spellcheck="false" ></div>
-    </div>
-
-    <div id="toolbar-wrapper" class="panel" >
-        <!--<h2>Toolbar</h2>-->
-        <div id="toolbar" >
-            <button id="pointer" class="tool">pointer</button>
-            <button id="pencil" class="tool">pencil</button>
-            <button id="poly" class="tool">polygon</button>
-            <button id="waypoint" class="tool">waypoint</button>
-        </div>
-        <div id="brush-properties" >
-            <div><p>Name</p><input id="name-input" value="New Brush" ></div>
-            <div><p>Color<input id="color-picker" type="color" value="#ffffff" ></p></div>
-            <div><p>Thickness<input id="thickness-input" type="range" min="0.1" max="100" step="0.1" value="5" ><p id="thickness-display" >5</p></p></div>
-        </div>
-        <div id="fill-properties" >
-            <div><p>Fill<input id="fill-checkbox" type="checkbox" autocomplete="off" ></p></div>
-            <div><p>Color<input id="fill-color-picker" type="color" value="#ffffff" ></p></div>
-            <div><p>Transparency<input id="transparency-input" type="range" min="0" max="1" step="0.01" value="1" ><p id="transparency-display" >1</p></p></div>
-        </div>
-        <div id="brushes" >
-            <button id="new-brush-btn" >New Brush</button>
-            <div id="brushes-container" >
-            </div>
-        </div>
-    </div>    
-    
-    <div id="waypoint-container" >
-        <canvas id=canvas ></canvas>     
-    </div>
-
-    <div class="center-wrapper" >
-        <div id="search-menu" class="panel" >
-            <button id="search-exit" onclick="closeSearch()" ><img src="assets/close_icon.svg" /></button>
-            <div id="search-bar-menu" >
-                <input id="search-bar" placeholder="Search" >
-            </div>
-            <div id="search-results" >
+    <body>
+        <div id="header" >
+            <a id="logo" href="#" >
+                <img src="assets/logo.svg" />
+                <p>Things my uncle's dog's previous owner once said</p>
+            </a>
+            <div id="menu" >
 
             </div>
         </div>
-    </div>
-    
 
-    <div class="center-wrapper" >
-        <div id="save-menu"class="panel" >
-            <input id="save-menu-input" >
-            <div id="save-menu-controls" >
-                <button onclick="map.utils.saveMap(ui.saveInput.value); closeSave()" >Save</button>
-                <button onclick="closeSave()" >Cancel</button>   
-            </div> 
-        </div>    
-    </div>
+        <div id="article" >
+        <h1>How Ben Mossberg colonized modern-day Ghana in the 20th century</h1><h4>By Chris P Bacon</h4>
+Ben Mossberg, a visionary entrepreneur and adventurer, colonized a Ghana in the early 20th century. The story of his journey and the establishment of the colony is a tale of determination, bravery, and ingenuity.
 
-    <div class="center-wrapper" >
-        <div id="edit-menu"class="panel" >
-            <div ondrop="fileDrop(event)" ondragover="dragOverHandler(event)" id="map-image-upload" >
-                <img ondrag="" src="assets/file_add.svg" />
-            </div>
-        </div>    
-    </div>
-       
-    
-    <!-- stole that grid from CodePen https://codepen.io/pigabo/pen/eAiLF -->
-    
-    <svg width="100%" height="100%" >
-        <defs>
-            <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2e2e2e" stroke-width="1" />
-            </pattern>
-            <pattern id="grid" width="200" height="200" patternUnits="userSpaceOnUse">
-                <rect width="200" height="200" fill="url(#smallGrid)" />
-                <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#2e2e2e" stroke-width="3" />
-            </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-    </svg>
+<h3><img src="https://i.ytimg.com/vi/oCW3K915roY/maxresdefault.jpg" />
+NBA 2k34 playstation advertisement
+</h3>
 
-    <!-- classes-->
-    <script src="js/classes/Brush.js"></script>
-    <script src="js/classes/Waypoint.js"></script>
-    <script src="js/classes/SmoothPointer.js"></script>
+Ben Mossberg was playing NBA 2k23 when he go dunked on so bad that he launched his <a href="https://www.target.com/p/dualsense-wireless-controller-for-playstation-5-nova-pink/-/A-85561292?preselect=85561292" >DualSense Wireless Controller for PlayStation 5</a> (enter code "thishappened" for a 5% discount). In fact, he threw it so hard that it went clean through the wall and flew somewhere south. Be could not afford to loose his prized <a href="https://www.target.com/p/dualsense-wireless-controller-for-playstation-5-nova-pink/-/A-85561292?preselect=85561292" >DualSense Wireless Controller for PlayStation 5</a> so he set out on an adventure to find his controller.
 
-    <!-- main-->
-    <script src="js/netUtils.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/tools/pointer.js"></script>
-    <script src="js/tools/pencil.js"></script>
-    <script src="js/tools/poly.js"></script>
-    <script src="js/tools/waypoint.js"></script>
-    <script src="js/tool.js"></script>
-    <script src="js/config.js"></script>
+After doing some calculations Ben realized that he will likely never find his controller again. The situation was not helped by the fact that he's just been fired from his job at the ;local popeyes. He had to think fast, the season was about to end and he still hasn't completed the season pass.
 
-    <!-- other-->
-    <script src="js/map_controls.js"></script>
-    <script src="js/ui_controls.js"></script>
-    <script src="js/rendering.js"></script>
-</body>
+<h3><img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/BCF4/production/_128327384_bbcmp_ghana.png" />
+Map of Ghana
+</h3>
 
+The next day Ben had a clear plan figured out. He was going to go the African gold coast and exploit that region for it's natural resources. He soon arrived in what's known today and immediatly got to exploiting the natural population and mining all their gold. All this gold made him rich enough to buy himself a new <a href="https://www.target.com/p/dualsense-wireless-controller-for-playstation-5-nova-pink/-/A-85561292?preselect=85561292" >DualSense Wireless Controller for PlayStation 5</a>. This however was not enough to satisfy his hunger for money and power.
+
+<h3><img src="https://cdn.ghanaweb.com/imagelib/pics/301/30126912.jpg" />
+Photo of the day Ghana gained independence
+</h3>
+
+He ruled with an iron fist, however in the year 1948 native Ghanaians decided to fight for their independence. In the end they finally forced him out of the country and gained complete independence in 1957.
+
+
+        </div>
+
+        <div id="footer" >
+
+        </div>
+    </body>
 </html>
